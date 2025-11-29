@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education</title>
+  <link rel="stylesheet" href="./dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../assets/vendor/aos/dist/aos.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+    integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+
+</head>
+
+<body>
+  <header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg bg-white py-3">
+      <div class="container">
+
+        <a class="navbar-brand" href="#"><img src="./image/logo-removebg-preview.webp" alt="company logo"></a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
+            <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="./service.html">Service</a></li>
+            <li class="nav-item"><a class="nav-link" href="./course.html">Course</a></li>
+            <li class="nav-item"><a class="nav-link" href="./dashboard.html">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+          </ul>
+
+
+          <a href="./login.html" class="ms-lg-3">
+            <button class="login-btn">
+              <i class="fa-solid fa-user me-2"></i> Log In
+            </button>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+  <section class="edu-dashboard">
+
+    <!-- Top Stats Row -->
+    <div class="dashboard-grid">
+
+      <div class="dash-card big-number" data-aos="zoom-in">
+        <h4>Total Students</h4>
+        <h2>12,845</h2>
+      </div>
+
+      <div class="dash-card big-number" data-aos="zoom-in">
+        <h4>Total Courses</h4>
+        <h2>95</h2>
+      </div>
+
+      <div class="dash-card big-number" data-aos="zoom-in">
+        <h4>Active Teachers</h4>
+        <h2>320</h2>
+      </div>
+
+      <div class="dash-card big-number" data-aos="zoom-in">
+        <h4>Total Earnings</h4>
+        <h2>$1.2M</h2>
+      </div>
+
+    </div>
+
+    <!-- Graphs Section -->
+    <div class="dashboard-grid">
+
+      <div class="dash-card chart-box" data-aos="zoom-in">
+        <h4>Student Enrollment (Monthly)</h4>
+        <div id="enrollmentChart"></div>
+      </div>
+
+      <div class="dash-card chart-box" data-aos="zoom-in">
+        <h4>Course Category Distribution</h4>
+        <div id="categoryChart"></div>
+      </div>
+
+      <div class="dash-card chart-box" data-aos="zoom-in">
+        <h4>Students by Region</h4>
+        <div id="regionChart"></div>
+      </div>
+
+
+
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="dashboard-grid">
+
+      <div class="dash-card chart-box" data-aos="zoom-in">
+        <h4>Top Performing Courses</h4>
+        <div id="topCoursesChart"></div>
+      </div>
+
+      <div class="dash-card chart-box" data-aos="zoom-in">
+        <h4>Teacher Ratings Overview</h4>
+        <div id="teacherRatingChart"></div>
+      </div>
+
+      <div class="dash-card chart-box" data-aos="zoom-in">
+        <h4>Course Completion Rate</h4>
+        <div id="completionChart"></div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <script>
+    // 1️⃣ Enrollment Chart (Area Line)
+    new ApexCharts(document.querySelector("#enrollmentChart"), {
+      chart: { type: "area", height: 250 },
+      series: [{
+        name: "Enrollments",
+        data: [120, 180, 260, 350, 420, 510, 620, 680, 780, 850, 980, 1100]
+      }],
+      xaxis: {
+        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+      },
+      colors: ["#1E88E5"]
+    }).render();
+
+
+    // 2️⃣ Category Distribution (Donut)
+    new ApexCharts(document.querySelector("#categoryChart"), {
+      chart: { type: "donut", height: 250 },
+      series: [40, 25, 20, 15],
+      labels: ["Science", "Arts", "Commerce", "Technology"],
+      colors: ["#42A5F5", "#8E24AA", "#FFA726", "#66BB6A"]
+    }).render();
+
+
+    // 3️⃣ Region-wise Students (Bar)
+    new ApexCharts(document.querySelector("#regionChart"), {
+      chart: { type: "bar", height: 250 },
+      series: [{
+        name: "Students",
+        data: [350, 480, 290, 180]
+      }],
+      xaxis: { categories: ["North", "South", "East", "West"] },
+      colors: ["#3F51B5"],
+      plotOptions: { bar: { horizontal: true } }
+    }).render();
+
+
+
+
+
+    // 5️⃣ Top Courses (Vertical Bar)
+    new ApexCharts(document.querySelector("#topCoursesChart"), {
+      chart: { type: "bar", height: 250 },
+      series: [{
+        name: "Students",
+        data: [320, 280, 260, 220, 180]
+      }],
+      xaxis: { categories: ["Web Dev", "AI Basics", "Commerce", "Biology", "Maths"] },
+      colors: ["#FB8C00"]
+    }).render();
+
+
+    // 6️⃣ Teacher Ratings (Radial Bar)
+    new ApexCharts(document.querySelector("#teacherRatingChart"), {
+      chart: { type: "radialBar", height: 250 },
+      series: [85, 78, 92],
+      labels: ["Knowledge", "Support", "Teaching"],
+      colors: ["#6A1B9A", "#8E24AA", "#BA68C8"]
+    }).render();
+
+
+    // 7️⃣ Course Completion Rate (Radial Gauge)
+    new ApexCharts(document.querySelector("#completionChart"), {
+      chart: { type: "radialBar", height: 250 },
+      series: [76],
+      labels: ["Completion Rate"],
+      colors: ["#00C853"],
+      plotOptions: {
+        radialBar: {
+          hollow: { size: "60%" }
+        }
+      }
+    }).render();
+
+  </script>
+
+  <!-- section footer -->
+
+  <footer class="edu-footer">
+    <div class="footer-container">
+
+
+      <div class="footer-col">
+        <a href=""><img src="./image/logo-removebg-preview.webp" alt="logo"></a>
+        <p class="footer-about">
+          Stackly provides quality learning, empowering students with knowledge and skills
+          to build a brighter future.
+        </p>
+
+        <div class="footer-social">
+          <a href="./error.html"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="./error.html"><i class="fa-brands fa-instagram"></i></a>
+          <a href="./error.html"><i class="fa-brands fa-youtube"></i></a>
+          <a href="./error.html"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="./index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+          <li><a href="./about.html"><i class="fa-solid fa-angle-right"></i> About Us</a></li>
+          <li><a href="./contact.html"><i class="fa-solid fa-angle-right"></i> Courses</a></li>
+          <li><a href="./contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h3>Courses</h3>
+        <ul>
+          <li><a href="./about.html#who"><i class="fa-regular fa-circle-dot"></i> Who we Are</a></li>
+          <li><a href="./about.html#achieve"><i class="fa-regular fa-circle-dot"></i> Achievements</a></li>
+          <li><a href="./about.html#features"><i class="fa-regular fa-circle-dot"></i> Feature</a></li>
+          <li><a href="./about.html#team"><i class="fa-regular fa-circle-dot"></i> Team</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+
+        <p><i class="fa-solid fa-location-dot"></i> 123 Education Street, Chennai</p>
+        <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+        <p><i class="fa-solid fa-envelope"></i> info@stackly.com</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 EduConnect. All Rights Reserved.
+    </div>
+  </footer>
+
+
+
+
+
+  <script>
+    // $(document).on('ready', function () {
+    // initialization of aos
+    AOS.init({
+      duration: 650,
+      once: false,
+      mirror: true,
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
