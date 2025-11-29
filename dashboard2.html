@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education</title>
+  <link rel="stylesheet" href="./dashboard2.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../assets/vendor/aos/dist/aos.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+    integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+
+</head>
+
+<body>
+  <header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg bg-white py-3">
+      <div class="container">
+
+        <a class="navbar-brand" href="#"><img src="./image/logo-removebg-preview.webp" alt="company logo"></a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
+            <li class="nav-item"><a class="nav-link" href="./home2.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="./about2.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="./service2.html">Service</a></li>
+            <li class="nav-item"><a class="nav-link" href="./course2.html">Course</a></li>
+            <li class="nav-item"><a class="nav-link" href="./dashboard2.html">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="./contact2.html">Contact</a></li>
+          </ul>
+
+
+          <a href="./login2.html" class="ms-lg-3">
+            <button class="login-btn">
+              <i class="fa-solid fa-user me-2"></i> Log In
+            </button>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- section 1 -->
+
+  <section class="education-dashboard">
+  <h2 class="dashboard-title" data-aos="zoom-in">Dashboard Overview</h2>
+
+  <div class="dashboard-grid-3row">
+
+    <div class="dash-box" data-aos="zoom-in">
+      <h3>Total Students</h3>
+      <p>12,430</p>
+    </div>
+
+    <div class="dash-box" data-aos="zoom-in">
+      <h3>Enrolled Courses</h3>
+      <p>320</p>
+    </div>
+
+    <div class="dash-box" data-aos="zoom-in">
+      <h3>Active Teachers</h3>
+      <p>85</p>
+    </div>
+
+    <div class="dash-box" data-aos="zoom-in">
+      <h3>Completed Sessions</h3>
+      <p>1,540</p>
+    </div>
+
+    <div class="dash-box" data-aos="zoom-in">
+      <h3>Upcoming Exams</h3>
+      <p>18</p>
+    </div>
+
+    <div class="dash-box" data-aos="zoom-in">
+      <h3>Performance Score</h3>
+      <p>92%</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- section dashboard -->
+  <section class="edu-chart-section">
+
+  <div class="chart-box" data-aos="zoom-in">
+    <h3>Students Growth (Monthly)</h3>
+    <div class="chart-holder">
+      <canvas id="lineChart"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-box" data-aos="zoom-in">
+    <h3>Course Enrollments</h3>
+    <div class="chart-holder">
+      <canvas id="barChart"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-box" data-aos="zoom-in">
+    <h3>Category Distribution</h3>
+    <div class="chart-holder">
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+
+</section>
+
+<!-- Load Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Chart Code -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // LINE CHART
+  new Chart(document.getElementById("lineChart").getContext("2d"), {
+    type: "line",
+    data: {
+      labels: ["Jan","Feb","Mar","Apr","May","Jun","Jul"],
+      datasets: [{
+        label: "Students",
+        data: [1200,1500,1800,2200,2700,3000,3500],
+        borderWidth: 3,
+        tension: 0.4,
+        borderColor: "rgba(74,108,247,1)",
+        backgroundColor: "rgba(74,108,247,0.15)",
+        fill: true
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } }
+    }
+  });
+
+  // BAR CHART
+  new Chart(document.getElementById("barChart").getContext("2d"), {
+    type: "bar",
+    data: {
+      labels: ["Web Dev", "Design", "Marketing", "DataSci", "AI/ML"],
+      datasets: [{
+        label: "Enrollments",
+        data: [800,600,900,700,650],
+        backgroundColor: [
+          "rgba(74,108,247,0.9)",
+          "rgba(58,201,154,0.9)",
+          "rgba(255,193,7,0.9)",
+          "rgba(255,99,132,0.9)",
+          "rgba(153,102,255,0.9)"
+        ]
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } }
+    }
+  });
+
+  // PIE CHART
+  new Chart(document.getElementById("pieChart").getContext("2d"), {
+    type: "pie",
+    data: {
+      labels: ["Development", "Design", "Marketing", "Business"],
+      datasets: [{
+        data: [40,25,20,15],
+        backgroundColor: [
+          "rgba(74,108,247,0.9)",
+          "rgba(58,201,154,0.9)",
+          "rgba(255,193,7,0.9)",
+          "rgba(255,99,132,0.9)"
+        ]
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
+
+});
+</script>
+
+<!-- sention 2 -->
+
+<section class="edu-two-dashboard">
+  <h2 class="section-title" data-aos="zoom-in">Education Dashboard Summary</h2>
+
+  <div class="two-box-container">
+
+    <div class="edu-box" data-aos="zoom-in">
+      <h3>Student Overview</h3>
+      <ul>
+        <li>Total Students: 12,430</li>
+        <li>New Admissions: 320 this month</li>
+        <li>Active Learners: 8,920</li>
+        <li>Average Attendance: 89%</li>
+      </ul>
+    </div>
+
+    <div class="edu-box" data-aos="zoom-in">
+      <h3>Course Performance</h3>
+      <ul>
+        <li>Total Courses: 78 Active</li>
+        <li>Top Rated Course: Web Development</li>
+        <li>Completion Rate: 76%</li>
+        <li>Upcoming Sessions: 14</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+  <script>
+    // $(document).on('ready', function () {
+    // initialization of aos
+    AOS.init({
+      duration: 650,
+      once: false,
+      mirror: true,
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
