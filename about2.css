@@ -7,7 +7,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to bottom, rgb(150, 235, 235), white); 
-  background-attachment: fixed;   
+  background-attachment: fixed;   /* important */
   background-size: cover;
   padding-top: 80px;
 }
@@ -51,7 +51,6 @@ body {
   color: #0d6efd;
 }
 
-
 .dropdown-custom {
   position: relative;
 }
@@ -87,7 +86,6 @@ body {
   color: #333;
   text-decoration: none;
 }
-
 
 
 
@@ -132,6 +130,317 @@ body {
 }
 .login-btn:hover {
   background: #084298;
+}
+
+/* section main */
+
+.about-hero {
+  position: relative;
+  width: 100%;
+  height: 450px; 
+  background: url('./image/cloud-computing.webp') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 35, 126, 0.6); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.about-hero-overlay h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.about-hero-overlay p {
+  font-size: 20px;
+  max-width: 700px;
+  line-height: 1.5;
+}
+
+
+@media(max-width: 992px) {
+  .about-hero {
+    height: 400px;
+  }
+
+  .about-hero-overlay h1 {
+    font-size: 38px;
+  }
+
+  .about-hero-overlay p {
+    font-size: 18px;
+  }
+}
+
+@media(max-width: 600px) {
+  .about-hero {
+    height: 300px;
+  }
+
+  .about-hero-overlay h1 {
+    font-size: 28px;
+  }
+
+  .about-hero-overlay p {
+    font-size: 16px;
+  }
+}
+
+
+
+
+/* section about us */
+
+.about-platform {
+  padding: 80px 10%;
+  font-family: "Poppins", sans-serif;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.about-content {
+  flex: 1;
+}
+
+.about-content h2 {
+  font-size: 36px;
+  color: #1a237e;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #424242;
+}
+
+.about-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  color: #424242;
+}
+
+.about-content ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.about-image {
+  flex: 1;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+
+@media(max-width: 992px) {
+  .about-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .about-content ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+
+  .about-content ul li::before {
+    content: "✔ ";
+    color: #1a237e;
+  }
+}
+
+
+/* section companies */
+
+.trusted-companies {
+  padding: 80px 10%;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.trusted-companies h2 {
+  font-size: 32px;
+  color: #1a237e;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.trusted-companies p {
+  font-size: 18px;
+  color: #424242;
+  margin-bottom: 40px;
+}
+
+.company-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.company-logos img {
+  max-width: 150px;
+  height: auto;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.company-logos img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+
+@media (max-width: 992px) {
+  .company-logos {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .company-logos img {
+    max-width: 120px;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* section students */
+
+.student-reviews {
+  padding: 80px 10%;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.student-reviews h2 {
+  font-size: 32px;
+  color: #1a237e;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.review-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+.review-card .rating {
+  font-size: 20px;
+  color: #ff9800;
+  margin-bottom: 15px;
+}
+
+.review-card p {
+  font-size: 16px;
+  font-style: italic;
+  color: #424242;
+  line-height: 1.5;
+}
+
+
+@media(max-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* main aim */
+
+.main-aim {
+  padding: 80px 10%;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+.main-aim h2 {
+  font-size: 36px;
+  color: #1a237e;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.main-aim p {
+  font-size: 18px;
+  color: #424242;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  line-height: 1.6;
+}
+
+.aim-points {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.aim-point {
+  background: #ffffff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  font-size: 16px;
+  color: #1a237e;
+  min-width: 220px;
+  transition: 0.3s;
+}
+
+.aim-point:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+
+@media(max-width: 768px) {
+  .aim-points {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 
